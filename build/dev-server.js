@@ -13,15 +13,11 @@ var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = process.env.NODE_ENV === 'testing'
   ? require('./webpack.prod.conf')
   : require('./webpack.dev.conf')
-// const mongoose = require("mongoose");
-// const bodyParser = require("body-parser");
-// var offerRouter = require("../routers/offer.router.js");
-// var axios = require('axios');
+
 
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
-// const mongoURI = process.env.MONGOURI || require("../secrets").MONGOURI;
 
 // automatically open browser, if not set will be false
 var autoOpenBrowser = !!config.dev.autoOpenBrowser
@@ -71,15 +67,8 @@ app.use(hotMiddleware)
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}));
 
 var uri = 'http://localhost:' + port
-
-// connect to the database
-// mongoose.connect(mongoURI);
-
-// app.use(offerRouter);
 
 var _resolve
 var readyPromise = new Promise(resolve => {
@@ -96,7 +85,37 @@ devMiddleware.waitUntilValid(() => {
   _resolve()
 })
 
+
+
+//const express = require("express");
+//const server = express();
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+var axios = require("axios");
+var offerRouter = require("../routers/offer.router.js");
+
+//const port = process.env.PORT || 8080;
+const mongoURI = process.env.MONGOURI || require("../secrets").MONGOURI;
+
+app.use(express.static(__dirname + '/src'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
+// connect to the database
+mongoose.connect(mongoURI);
+
+app.get("/", function(req, res) {
+  res.sendFile("index.html", {root: __dirname});
+});
+
+app.use(offerRouter);
+
 var server = app.listen(port)
+
+// app.listen(port, function(){
+//   console.log("now listening on port: ", port);
+// });
+
 
 module.exports = {
   ready: readyPromise,
