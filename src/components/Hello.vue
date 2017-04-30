@@ -45,6 +45,21 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    getDashboardOffers: function () {
+      var url = '/offers'
+      axios.get(url)
+          .then(function (response) {
+            this.offers = response.data.offers
+          }.bind(this))
+          .catch(function (err) {
+            console.log(err)
+          })
+    }
+  },
+  created: function () {
+    this.getDashboardOffers()
   }
 }
 </script>
