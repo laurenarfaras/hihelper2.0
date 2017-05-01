@@ -24,6 +24,11 @@ var offerSchema = mongoose.Schema({
   person: {
     type: String,
     required: true
+  },
+  email: {
+    type: String,
+    required: true,
+    default: "hello@gmail.com"
   }
 });
 
