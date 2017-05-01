@@ -3,9 +3,9 @@
     <div class="container">
 
       <!-- card -->
-      <div v-for="offer in offers" class="demo-card-square mdl-card mdl-shadow--2dp col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-4 col-lg-4">
+      <div v-for="(offer, index) in offers" class="demo-card-square mdl-card mdl-shadow--2dp col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-4 col-lg-4">
         <div class="mdl-card__title mdl-card--expand">
-          <h2 class="mdl-card__title-text">{{ offer.title }}</h2>
+          <h2 class="mdl-card__title-text">{{ offer.title }} - {{ index }}</h2>
         </div>
         <div class="card__meta">
           <p>{{ offer.description }}</p>
@@ -15,9 +15,12 @@
           {{ offer.description }}
         </div> -->
         <div class="mdl-card__actions mdl-card--border">
-          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          <button v-on:click="seeOffer(offer, index)" type="button" class="offer-button mdl-button" :key="index">
             See Offer
-          </a>
+          </button>
+          <!-- <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            See Offer
+          </a> -->
         </div>
       </div>
 
@@ -31,6 +34,21 @@
         </button>
       </router-link>
     </div>
+
+
+    <dialog class="mdl-dialog">
+      <h4 class="mdl-dialog__title" id="mdl-title">Allow data collection?</h4>
+      <div class="mdl-dialog__content">
+        <p id="mdl-description"></p>
+        <p id="mdl-payment"></p>
+        <p id="mdl-date"></p>
+        <p id="mdl-person"></p>
+      </div>
+      <div class="mdl-dialog__actions">
+        <button type="button" class="mdl-button">Agree</button>
+        <button type="button" class="mdl-button close">Disagree</button>
+      </div>
+    </dialog>
 
   </div>
 </template>
@@ -52,6 +70,32 @@ export default {
           }.bind(this))
           .catch(function (err) {
             console.log(err)
+          })
+    },
+    seeOffer: function (offer, index) {
+      var url = `/offers/${offer._id}`
+      axios.get(url)
+          .then(function (response) {
+            var dialog = document.querySelector('dialog');
+            var rd = response.data.offers[0]
+            document.querySelector('#mdl-title').innerText = rd.title
+            document.querySelector('#mdl-description').innerText = rd.description
+            document.querySelector('#mdl-payment').innerText = "$" + rd.requestAmount
+            document.querySelector('#mdl-date').innerText = rd.updated
+            console.log(rd);
+            document.querySelector('#mdl-person').innerText = rd.person
+            //var showDialogButton = document.querySelector('');
+
+            if (! dialog.showModal) {
+              dialogPolyfill.registerDialog(dialog);
+            }
+            dialog.showModal();
+            dialog.querySelector('.close').addEventListener('click', function() {
+              dialog.close();
+            });
+          }.bind(this))
+          .catch(function (err) {
+            console.log(err);
           })
     }
   },
