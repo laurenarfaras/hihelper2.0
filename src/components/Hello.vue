@@ -41,12 +41,12 @@
       <div class="mdl-dialog__content">
         <p id="mdl-description"></p>
         <p id="mdl-payment"></p>
-        <p id="mdl-date"></p>
+        <!-- <p id="mdl-date"></p> -->
         <p id="mdl-person"></p>
       </div>
       <div class="mdl-dialog__actions">
-        <button type="button" class="mdl-button">Agree</button>
-        <button type="button" class="mdl-button close">Disagree</button>
+        <button type="button" class="mdl-button">Contact</button>
+        <button type="button" class="mdl-button close">Close</button>
       </div>
     </dialog>
 
@@ -81,9 +81,9 @@ export default {
             document.querySelector('#mdl-title').innerText = rd.title
             document.querySelector('#mdl-description').innerText = rd.description
             document.querySelector('#mdl-payment').innerText = "$" + rd.requestAmount
-            document.querySelector('#mdl-date').innerText = rd.updated
             console.log(rd);
-            document.querySelector('#mdl-person').innerText = rd.person
+            document.querySelector('#mdl-person').innerText = "posted by: " + rd.person + "\n on " + rd.updated.slice(0,10)
+            // document.querySelector('#mdl-date').innerText = rd.updated.slice(0,10)
             //var showDialogButton = document.querySelector('');
 
             if (! dialog.showModal) {
