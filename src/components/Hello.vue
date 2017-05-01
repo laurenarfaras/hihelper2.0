@@ -1,26 +1,30 @@
 <template>
   <div class="hello">
-    <div class="container">
+    <div class="container-fluid">
 
-      <!-- card -->
-      <div v-for="(offer, index) in offers" class="demo-card-square mdl-card mdl-shadow--2dp col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-4 col-lg-4">
-        <div class="mdl-card__title mdl-card--expand">
-          <h2 class="mdl-card__title-text">{{ offer.title }}</h2>
-        </div>
-        <div class="card__meta">
-          <p>{{ offer.description }}</p>
-          <time> ${{ offer.requestAmount }}</time>
-        </div>
-        <!-- <div class="mdl-card__supporting-text">
-          {{ offer.description }}
-        </div> -->
-        <div class="mdl-card__actions mdl-card--border">
-          <button v-on:click="seeOffer(offer, index)" type="button" class="offer-button mdl-button" :key="index">
-            See Offer
-          </button>
-          <!-- <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-            See Offer
-          </a> -->
+      <div class="row">
+        <!-- card -->
+        <div v-for="(offer, index) in offers" class="demo-card-square mdl-card mdl-shadow--2dp col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-2 col-lg-3 col-lg-offset-2">
+          <div class="mdl-card__title mdl-card--expand">
+            <h2 class="title-text mdl-card__title-text">{{ offer.title }}</h2>
+          </div>
+          <div class="card__meta">
+            <p class="offer-description">{{ offer.description }}</p>
+            <time> ${{ offer.requestAmount }}</time>
+          </div>
+          <!-- <div class="mdl-card__supporting-text">
+            {{ offer.description }}
+          </div> -->
+          <div class="mdl-card__actions mdl-card--border">
+            <button v-on:click="seeOffer(offer, index)" type="button" class="offer-button mdl-button" :key="index">
+              See Offer
+            </button>
+            <!-- <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+              See Offer
+            </a> -->
+      </div>
+
+
         </div>
       </div>
 
@@ -124,6 +128,42 @@ a {
   color: #42b983;
 }
 
+.container-fluid {
+  display: flex;
+  justify-content: center;
+}
+
+div .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mdl-button {
+  color: darkslategray;
+}
+
+.mdl-card__actions {
+  background-color: lavender !important;
+}
+
+time {
+  margin-left: 1em;
+  padding-left: 1em;
+}
+
+.offer-description {
+  text-align: left;
+}
+
+.title-text {
+  text-align: center;
+}
+
+div.mdl-card__title.mdl-card--expand {
+  justify-content: center;
+}
+
 /*.container-button {
   display: block;
   margin: 0.8em;
@@ -140,6 +180,10 @@ a {
   /*width: 320px;
   height: 320px;*/
   margin: 0.5em;
+}
+
+.mdl-card__title-text {
+  align-self: flex-start;
 }
 
 /* card meta */

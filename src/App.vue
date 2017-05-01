@@ -13,7 +13,7 @@ export default {
   name: 'app',
   data () {
     return {
-      title: 'hi',
+      title: 'hi helper',
       offers: []
     }
   },
