@@ -1,6 +1,6 @@
 <template>
   <div class="create">
-    <div class="container">
+    <div class="container create-container">
       <!-- <p>hi this is the create page</p> -->
 
       <form action="#">
@@ -24,10 +24,10 @@
           <span class="mdl-textfield__error">Input is not a number!</span>
         </div>
 
-        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
+        <!-- <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
           <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input">
           <span class="mdl-checkbox__label">Completed</span>
-        </label>
+        </label> -->
 
         <div class="container-button">
           <!-- Colored FAB button with ripple -->
@@ -45,31 +45,16 @@
 </template>
 
 <style>
-  body {
-    text-align: center;
+  a {
+    color: #4b0082 !important;
   }
-  .mdl-layout {
-    align-items: center;
-    justify-content: center;
-  }
-  .mdl-layout__content {
-    padding: 24px;
-    flex: none;
-  }
-  .mdl-button {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 10px;
-  }
-  .container {
+  .create-container {
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   .mdl-textfield {
     display: flex;
     justify-content: center;
-  }
-  a {
-    color: #4b0082 !important;
   }
 </style>
