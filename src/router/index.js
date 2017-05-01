@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import App from './App'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 

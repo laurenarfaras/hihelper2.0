@@ -22,6 +22,14 @@
       </div>
 
     </div>
+
+    <div class="container-button">
+      <!-- Colored FAB button with ripple -->
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+        <router-link class="material-icons" to="/create">add</router-link>
+      </button>
+    </div>
+
   </div>
 </template>
 
@@ -30,20 +38,7 @@ export default {
   name: 'hello',
   data () {
     return {
-      offers: [
-        {
-          title: 'laundry',
-          description: 'take laundry to dry cleaners',
-          requestAmount: '25',
-          created: new Date()
-        },
-        {
-          title: 'lawn',
-          description: 'mow lawn',
-          requestAmount: '30',
-          created: new Date()
-        }
-      ]
+      offers: []
     }
   },
   methods: {
@@ -82,6 +77,18 @@ li {
 
 a {
   color: #42b983;
+}
+
+/*.container-button {
+  display: block;
+  margin: 0.8em;
+}*/
+
+.container-button button {
+  position: fixed;
+  left: 80%;
+  top: 80%;
+  z-index: 2;
 }
 
 .demo-card-square.mdl-card {

@@ -7,10 +7,24 @@ Vue.use(VueRouter)
 
 import Hello from './components/Hello'
 import About from './components/About'
+import Create from './components/Create'
 
 const routes = [
-  { path: '/', component: Hello },
-  { path: '/about', component: About }
+  {
+    path: '/',
+    name: 'Hello',
+    component: Hello
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About
+  },
+  {
+    path: '/create',
+    name: 'Create',
+    component: Create
+  }
 ]
 
 const router = new VueRouter({
