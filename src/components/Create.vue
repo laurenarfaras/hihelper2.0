@@ -24,6 +24,14 @@
           <span class="mdl-textfield__error">Input is not a number!</span>
         </div>
 
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input placeholder="your name" class="mdl-textfield__input" type="text" id="offer-person" v-model="person" required>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input placeholder="email" class="mdl-textfield__input" type="text" id="offer-email" v-model="email" required>
+        </div>
+
         <!-- <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
           <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input">
           <span class="mdl-checkbox__label">Completed</span>
@@ -32,7 +40,7 @@
         <div class="container-button">
           <!-- Colored FAB button with ripple -->
           <router-link to="/">
-            <button v-on:click="createOffer(title, description, requestAmount)" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+            <button v-on:click="createOffer(title, description, requestAmount, person, email)" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
               <i class="material-icons md-light">done</i>
             </button>
           </router-link>
@@ -55,7 +63,8 @@ export default {
       person: '',
       title: '',
       description: '',
-      requestAmount: ''
+      requestAmount: '',
+      email: ''
     }
   },
   methods: {
@@ -69,13 +78,14 @@ export default {
             console.log(err)
           })
     },
-    createOffer: function (title, description, requestAmount) {
+    createOffer: function (title, description, requestAmount, person, email) {
       var url = '/offers'
       axios.post(url, {
-        person: 'person',
+        person: person,
         title: title,
         description: description,
-        requestAmount: requestAmount
+        requestAmount: requestAmount,
+        email: email
       })
       .then(function (response) {
         console.log("posted successfully");

@@ -5,7 +5,7 @@
       <!-- card -->
       <div v-for="(offer, index) in offers" class="demo-card-square mdl-card mdl-shadow--2dp col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-md-4 col-lg-4">
         <div class="mdl-card__title mdl-card--expand">
-          <h2 class="mdl-card__title-text">{{ offer.title }} - {{ index }}</h2>
+          <h2 class="mdl-card__title-text">{{ offer.title }}</h2>
         </div>
         <div class="card__meta">
           <p>{{ offer.description }}</p>
