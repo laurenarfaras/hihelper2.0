@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-link to="/">Home</router-link>
-    <router-link to="/about">About</router-link>
+    <!-- <router-link to="/about">About</router-link> -->
     <h2>{{ title }}</h2>
     <!-- the router outlet, where all matched components will be viewed -->
     <router-view></router-view>
@@ -23,6 +23,9 @@ export default {
 </script>
 
 <style>
+body {
+background-color: lightblue;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
