@@ -7,20 +7,20 @@
 
         <!-- Textfield with floating label -->
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <label class="mdl-textfield__label" for="sample3">Offer Title</label>
-          <input class="mdl-textfield__input" type="text" id="sample3" v-model="title" required>
+          <!-- <label class="mdl-textfield__label" for="sample3">Offer Title</label> -->
+          <input placeholder="offer title" class="mdl-textfield__input" type="text" id="offer-title" v-model="title" required>
         </div>
 
         <!-- Floating Multiline Textfield -->
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <label class="mdl-textfield__label" for="sample5">Offer description...</label>
-          <textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5" v-model="description" required></textarea>
+          <!-- <label class="mdl-textfield__label" for="sample5">Offer description...</label> -->
+          <textarea placeholder="offer description..." class="mdl-textfield__input" type="text" rows= "3" id="offer-description" v-model="description" required></textarea>
         </div>
 
         <!-- Numeric Textfield with Floating Label -->
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-          <label class="mdl-textfield__label" for="sample4">$ payment</label>
-          <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4" v-model="requestAmount" required>
+          <!-- <label class="mdl-textfield__label" for="sample4">$ payment</label> -->
+          <input placeholder="$ payment" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="payment" v-model="requestAmount" required>
           <span class="mdl-textfield__error">Input is not a number!</span>
         </div>
 
@@ -31,9 +31,11 @@
 
         <div class="container-button">
           <!-- Colored FAB button with ripple -->
-          <button v-on:click="createOffer(title, description, requestAmount)" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-            <router-link to="/" class="material-icons md-light">done</router-link>
-          </button>
+          <router-link to="/">
+            <button v-on:click="createOffer(title, description, requestAmount)" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+              <i class="material-icons md-light">done</i>
+            </button>
+          </router-link>
         </div>
 
       </form>

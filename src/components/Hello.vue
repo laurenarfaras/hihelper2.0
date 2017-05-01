@@ -25,9 +25,11 @@
 
     <div class="container-button">
       <!-- Colored FAB button with ripple -->
-      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-        <router-link class="material-icons" to="/create">add</router-link>
-      </button>
+      <router-link to="/create">
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+          <i class="material-icons">add</i>
+        </button>
+      </router-link>
     </div>
 
   </div>
