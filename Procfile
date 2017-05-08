@@ -1,1 +1,1 @@
-node build/dev-server.js
+npm start
